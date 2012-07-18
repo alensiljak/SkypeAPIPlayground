@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SKYPE4COMLib;
 
 namespace SkypeAPIClient
 {
@@ -21,7 +22,8 @@ namespace SkypeAPIClient
             try
             {
                 sanitize_input();
-                send_message(UsernameTextBox.Text, MessageTextBox.Text);
+                var skype = new SkypeAdapter();
+                skype.send_message(UsernameTextBox.Text, MessageTextBox.Text);
             }
             catch (Exception exception)
             {
@@ -45,9 +47,6 @@ namespace SkypeAPIClient
             MessageTextBox.Text = MessageTextBox.Text.Trim();
         }
 
-        private void send_message(string username, string message)
-        {
-            
-        }
+
     }
 }
